@@ -150,13 +150,13 @@ export function PerformanceCarousel() {
 
                     {/* Right Content */}
                     <div className="text-left shrink-0 md:min-w-50 mb-8 md:mb-0">
-                      <p className="text-[#a855f7] text-sm md:text-base font-medium mb-1">
+                      <p className="text-[#a855f7] text-xs md:text-sm font-medium mb-1">
                         {item.rightLabel}
                       </p>
-                      <p className="text-2xl md:text-3xl font-bold text-white mb-1">
+                      <p className="text-xl md:text-2xl font-bold text-white mb-1">
                         {item.rightValue}
                       </p>
-                      <p className="text-[#a855f7] text-sm md:text-base font-medium">
+                      <p className="text-[#a855f7] text-xs md:text-sm font-medium">
                         {item.rightSub}
                       </p>
                     </div>

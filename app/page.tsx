@@ -7,6 +7,9 @@ import { PerformanceCarousel } from '@/components/sections/performance/performan
 import { ScrollytellingSection } from '@/components/sections/scrollytelling-section';
 import { OledDisplaySection } from '@/components/sections/oled-display-section';
 import { OledFeaturesSection } from '@/components/sections/oled-features-section';
+import { CoolingSection } from '@/components/sections/cooling-section';
+import { ControlSection } from '@/components/sections/control-section';
+import { DesignSection } from '@/components/sections/design-section';
 
 export default function Home() {
   return (
@@ -43,33 +46,12 @@ export default function Home() {
       {/* OLED Features Scrollytelling */}
       <OledFeaturesSection />
 
-      {/* Additional dummy sections to fill out the nav items */}
-      <section
-        id="design"
-        className="min-h-screen w-full flex items-center justify-center bg-zinc-100 dark:bg-zinc-900"
-      >
-        <h2 className="text-2xl font-bold text-zinc-700 dark:text-zinc-400">
-          Design Section
-        </h2>
-      </section>
+      {/* Design Section */}
+      <DesignSection />
 
-      <section
-        id="cooling"
-        className="min-h-screen w-full flex items-center justify-center bg-zinc-200 dark:bg-zinc-950"
-      >
-        <h2 className="text-2xl font-bold text-zinc-700 dark:text-zinc-400">
-          Cooling Section
-        </h2>
-      </section>
-
-      <section
-        id="ai"
-        className="min-h-screen w-full flex items-center justify-center bg-zinc-100 dark:bg-zinc-900"
-      >
-        <h2 className="text-2xl font-bold text-zinc-700 dark:text-zinc-400">
-          AI & Copilot+ Section
-        </h2>
-      </section>
+      <CoolingSection />
+      
+      <ControlSection />
     </main>
   );
 }

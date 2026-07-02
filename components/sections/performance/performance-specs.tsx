@@ -18,7 +18,7 @@ export function PerformanceSpecs() {
           <p className="text-purple-600 dark:text-purple-500 text-xs md:text-sm font-semibold mb-2 transition-colors duration-500">
             Hệ điều hành
           </p>
-          <h3 className="text-2xl md:text-3xl font-bold mb-1">
+          <h3 className="text-xl md:text-2xl font-bold mb-1">
             Windows 11 Home
           </h3>
           <p className="text-zinc-500 text-xs tracking-wider transition-colors duration-500">
@@ -43,13 +43,13 @@ export function PerformanceSpecs() {
               className="w-16 h-16 object-contain"
             />
             <div className="flex items-center gap-0.5 text-zinc-900 dark:text-white transition-colors duration-500">
-              <span className="font-semibold text-2xl tracking-wide">
+              <span className="font-semibold text-xl md:text-2xl tracking-wide">
                 Copilot
               </span>
               <span className="border border-zinc-900 dark:border-white rounded-lg px-1 text-sm font-bold ml-1 transition-colors duration-500">
                 +
               </span>
-              <span className="font-semibold text-2xl tracking-wide ml-1">
+              <span className="font-semibold text-xl md:text-2xl tracking-wide ml-1">
                 PC
               </span>
             </div>
@@ -66,7 +66,7 @@ export function PerformanceSpecs() {
           <p className="text-purple-600 dark:text-purple-500 text-xs md:text-sm font-semibold mb-2 transition-colors duration-500">
             Vi xử lý Intel® Core™
           </p>
-          <h3 className="text-2xl md:text-3xl font-bold">Ultra 9 386H</h3>
+          <h3 className="text-xl md:text-2xl font-bold">Ultra 9 386H</h3>
         </motion.div>
       </div>
 
@@ -82,7 +82,7 @@ export function PerformanceSpecs() {
           <p className="text-purple-600 dark:text-purple-500 text-xs md:text-sm font-semibold mb-2 transition-colors duration-500">
             Lên đến NVIDIA® GeForce
           </p>
-          <h3 className="text-3xl md:text-4xl font-bold mb-1">RTX™ 5080</h3>
+          <h3 className="text-2xl md:text-3xl font-bold mb-1">RTX™ 5080</h3>
           <p className="text-zinc-500 text-xs tracking-wider transition-colors duration-500">Laptop GPU</p>
         </motion.div>
 
@@ -96,7 +96,7 @@ export function PerformanceSpecs() {
           <p className="text-purple-600 dark:text-purple-500 text-xs md:text-sm font-semibold mb-2 transition-colors duration-500">
             TGP tối đa
           </p>
-          <h3 className="text-3xl md:text-4xl font-bold mb-1">130W</h3>
+          <h3 className="text-2xl md:text-3xl font-bold mb-1">130W</h3>
           <p className="text-zinc-500 text-xs tracking-wider transition-colors duration-500">
             ở Manual Mode
           </p>

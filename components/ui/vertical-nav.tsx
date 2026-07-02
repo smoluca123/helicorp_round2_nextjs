@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { motion, AnimatePresence } from 'framer-motion';
+
 
 const sections = [
   { id: 'hero', label: 'TỔNG QUAN' },
@@ -10,7 +10,7 @@ const sections = [
   { id: 'parallax', label: 'MÀN HÌNH' },
   { id: 'design', label: 'THIẾT KẾ' },
   { id: 'cooling', label: 'TẢN NHIỆT' },
-  { id: 'ai', label: 'AI & COPILOT+' },
+  { id: 'control', label: 'ĐIỀU KHIỂN' },
 ];
 
 export function VerticalNav() {
@@ -62,7 +62,7 @@ export function VerticalNav() {
       </div>
 
       {/* Section Indicator */}
-      <div className="flex flex-col items-center gap-2 pointer-events-auto">
+      <div className="flex w-full flex-col items-center gap-1 pointer-events-auto">
         {sections.map((section, index) => {
           const isActive = index === activeIndex;
 
@@ -70,22 +70,19 @@ export function VerticalNav() {
             <button
               key={section.id}
               onClick={() => scrollTo(section.id)}
-              className="relative flex items-center justify-center h-6 w-full group cursor-pointer "
+              className="relative flex items-center justify-center h-10 w-full group cursor-pointer"
               aria-label={`Scroll to ${section.label}`}
             >
-              <AnimatePresence>
-                {isActive && (
-                  <motion.span
-                    initial={{ opacity: 0, x: -5 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -5 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute right-8 whitespace-nowrap text-[10px] font-bold tracking-widest text-zinc-900 dark:text-zinc-100 pointer-events-none bg-white/70 dark:bg-zinc-900/50 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/50 dark:border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.8)] dark:shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-                  >
-                    {section.label}
-                  </motion.span>
+              <span
+                className={cn(
+                  "absolute right-12 whitespace-nowrap text-[10px] font-bold tracking-widest text-zinc-900 dark:text-zinc-100 pointer-events-none bg-white/70 dark:bg-zinc-900/50 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/50 dark:border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.8)] dark:shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all duration-300",
+                  isActive
+                    ? "opacity-100 translate-x-0"
+                    : "opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
                 )}
-              </AnimatePresence>
+              >
+                {section.label}
+              </span>
               <div
                 className={cn(
                   'transition-all duration-300 rounded-sm rotate-25 shadow-md ',

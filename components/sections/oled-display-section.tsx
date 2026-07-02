@@ -81,7 +81,7 @@ export function OledDisplaySection() {
             </h2>
 
             {/* Description */}
-            <p className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto text-center transition-colors duration-500">
+            <p className="text-zinc-600 dark:text-zinc-400 text-xs md:text-sm lg:text-base leading-relaxed max-w-2xl mx-auto text-center transition-colors duration-500">
               Màn hình đỉnh cao với độ sắc nét và màu sắc vượt trội, được chứng
               nhận ROG Nebula Display.
             </p>
@@ -141,7 +141,7 @@ export function OledDisplaySection() {
       <section className="relative w-full bg-zinc-50 dark:bg-[#0a0a0a] py-24 px-6 md:px-12 lg:px-24 flex flex-col items-center border-t border-zinc-200 dark:border-white/5 transition-colors duration-500">
         {/* Đoạn văn mô tả */}
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <p className="text-zinc-700 dark:text-zinc-300 text-base md:text-lg lg:text-xl leading-relaxed font-light transition-colors duration-500">
+          <p className="text-zinc-700 dark:text-zinc-300 text-sm md:text-base lg:text-lg leading-relaxed font-light transition-colors duration-500">
             Cuối cùng thì các game thủ dùng laptop cũng có thể tận hưởng thời
             gian đáp ứng siêu nhanh và tỷ lệ tương phản khó tin mà chỉ có thể
             thành hiện thực với công nghệ OLED. Màn hình ROG Nebula HDR này sở
@@ -161,7 +161,7 @@ export function OledDisplaySection() {
               key={i}
               className="flex flex-col items-center text-center space-y-2"
             >
-              <span className="text-2xl md:text-3xl font-black text-zinc-900 dark:text-white drop-shadow-sm dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-colors duration-500">
+              <span className="text-xl md:text-2xl font-black text-zinc-900 dark:text-white drop-shadow-sm dark:drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-colors duration-500">
                 {spec.value}
               </span>
               <span className="text-xs md:text-sm text-zinc-500 uppercase tracking-widest font-semibold transition-colors duration-500">

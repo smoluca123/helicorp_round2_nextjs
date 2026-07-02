@@ -123,7 +123,7 @@ function FeatureText({
         viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.6 }}
       >
-        <span className="text-[#9b72ff] font-bold uppercase tracking-wider text-sm md:text-base lg:text-lg">
+        <span className="text-[#9b72ff] font-bold uppercase tracking-wider text-xs md:text-sm lg:text-base">
           {feature.subtitle}
         </span>
         <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-white mt-2 leading-[1.1] tracking-tight">
@@ -154,7 +154,7 @@ function FeatureText({
               <span className="text-[#9b72ff] text-xs md:text-sm font-medium">
                 {spec.label}
               </span>
-              <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-white drop-shadow-sm">
+              <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-white drop-shadow-sm">
                 {spec.value}
               </span>
             </div>
