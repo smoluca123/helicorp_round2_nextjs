@@ -5,6 +5,8 @@ import { UseCasesSection } from '@/components/sections/use-cases-section';
 import { PerformanceSection } from '@/components/sections/performance-section';
 import { PerformanceCarousel } from '@/components/sections/performance/performance-carousel';
 import { ScrollytellingSection } from '@/components/sections/scrollytelling-section';
+import { OledDisplaySection } from '@/components/sections/oled-display-section';
+import { OledFeaturesSection } from '@/components/sections/oled-features-section';
 
 export default function Home() {
   return (
@@ -35,15 +37,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Another Dummy Section */}
-      <section
-        id="parallax"
-        className="min-h-screen w-full flex items-center justify-center bg-zinc-200 dark:bg-zinc-950"
-      >
-        <h2 className="text-2xl font-bold text-zinc-700 dark:text-zinc-400">
-          More Parallax Sections Here
-        </h2>
-      </section>
+      {/* OLED Display Section (Scroll zoom out) */}
+      <OledDisplaySection />
+
+      {/* OLED Features Scrollytelling */}
+      <OledFeaturesSection />
 
       {/* Additional dummy sections to fill out the nav items */}
       <section

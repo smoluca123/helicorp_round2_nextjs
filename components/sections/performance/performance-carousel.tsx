@@ -93,10 +93,10 @@ export function PerformanceCarousel() {
             const isActive = current === index + 1;
             return (
               <CarouselItem key={item.id}>
-                <div className="relative w-full aspect-square md:aspect-21/10 rounded-sm overflow-hidden border border-cyan-400/30 border-b-purple-500/50 border-t-purple-500/50 bg-[#0a0a0f] flex flex-col justify-end p-8 md:p-12 transition-all duration-500">
+                <div className="h-full relative w-full aspect-auto pt-70 pb-16 px-6 md:aspect-21/10 rounded-sm overflow-hidden border border-cyan-400/30 border-b-purple-500/50 border-t-purple-500/50 bg-[#0a0a0f] flex flex-col justify-end md:p-12 transition-all duration-500">
                   {/* Center Image Container */}
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="relative w-[80%] h-[80%] md:w-[60%] md:h-[70%] -mt-12 md:-mt-20">
+                  <div className="absolute top-0 inset-x-0 h-70 md:h-auto md:inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="relative w-[90%] h-[90%] md:w-[60%] md:h-[70%] mt-4 md:-mt-20">
                       {/* Soft CSS Blue Radial Glow Background */}
                       <div
                         className={cn(
@@ -132,7 +132,7 @@ export function PerformanceCarousel() {
                   </div>
 
                   {/* Content Overlay */}
-                  <div className="relative z-20 flex flex-col md:flex-row justify-between items-end w-full gap-8 md:px-4">
+                  <div className="relative z-20 flex flex-col md:flex-row justify-between items-start md:items-end w-full gap-8 md:px-4">
                     {/* Left Content */}
                     <div className="max-w-2xl text-left">
                       <h3 className="text-3xl md:text-[2.5rem] font-bold text-white mb-4 tracking-tight uppercase">
@@ -149,7 +149,7 @@ export function PerformanceCarousel() {
                     </div>
 
                     {/* Right Content */}
-                    <div className="text-left shrink-0 min-w-50">
+                    <div className="text-left shrink-0 md:min-w-50 mb-8 md:mb-0">
                       <p className="text-[#a855f7] text-sm md:text-base font-medium mb-1">
                         {item.rightLabel}
                       </p>
@@ -168,7 +168,7 @@ export function PerformanceCarousel() {
         </CarouselContent>
 
         {/* Custom Pagination Dots overlaying the slide */}
-        <div className="absolute bottom-6 right-8 md:bottom-10 md:right-12 z-30 flex items-center gap-4">
+        <div className="absolute bottom-4 right-6 md:bottom-10 md:right-12 z-30 flex items-center gap-4">
           <div className="flex items-center gap-2">
             {Array.from({ length: Math.max(CAROUSEL_DATA.length, count) }).map(
               (_, index) => {
