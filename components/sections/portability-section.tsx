@@ -40,7 +40,6 @@ export function PortabilitySection() {
           alt="Portability Background"
           fill
           className="object-cover object-center"
-          quality={60}
           sizes="100vw"
         />
         {/* Lớp phủ cho dark mode */}
@@ -86,7 +85,6 @@ export function PortabilitySection() {
                 alt="Sạc 50% chỉ trong 30 phút"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
-                quality={70}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/10 to-transparent"></div>
@@ -128,7 +126,6 @@ export function PortabilitySection() {
                 alt="1.5KG"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
-                quality={70}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent"></div>
@@ -148,7 +145,6 @@ export function PortabilitySection() {
                 alt="73Wh"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
-                quality={70}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent"></div>
@@ -168,7 +164,6 @@ export function PortabilitySection() {
                 alt="Wi-Fi 7"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
-                quality={70}
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent"></div>
