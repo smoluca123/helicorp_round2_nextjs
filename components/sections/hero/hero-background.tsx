@@ -11,7 +11,6 @@ export function HeroBackground() {
     <>
       {/* Background images — controlled by Tailwind dark mode (no JS needed) */}
       <div className="absolute inset-0 -z-20 overflow-hidden bg-zinc-100 dark:bg-black">
-
         {/* Light mode image */}
         <div className="absolute inset-0 block dark:hidden">
           <Image
@@ -21,7 +20,7 @@ export function HeroBackground() {
             className="object-cover object-top"
             priority
             sizes="100vw"
-            quality={75}
+            quality={60}
           />
         </div>
 
@@ -34,7 +33,6 @@ export function HeroBackground() {
             className="object-cover object-top"
             priority
             sizes="100vw"
-            quality={80}
           />
         </div>
       </div>
