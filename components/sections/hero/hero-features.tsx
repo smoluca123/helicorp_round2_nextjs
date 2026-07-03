@@ -11,12 +11,13 @@ const features = [
         alt="CPU"
         width={90}
         height={90}
-        className="w-22.5 h-22.5 object-contain"
+        className="w-22.5 h-22.5 object-contain invert dark:invert-0 transition-all duration-500"
       />
     ),
     title:
       'Tận hưởng khả năng sáng tạo và chơi game đỉnh cao trên Windows 11 với bộ vi xử lý Intel® Core™ Ultra 9 285H và NPU 50 TOPs',
     linkText: 'đọc thêm về CPU',
+    href: '#performance',
   },
   {
     icon: (
@@ -25,11 +26,12 @@ const features = [
         alt="GPU"
         width={90}
         height={90}
-        className="w-22.5 h-22.5 object-contain"
+        className="w-22.5 h-22.5 object-contain invert dark:invert-0 transition-all duration-500"
       />
     ),
     title: 'Chơi game và sáng tạo với GPU lên đến NVIDIA® GeForce RTX™ 5080',
     linkText: 'đọc thêm về GPU',
+    href: '#performance',
   },
   {
     icon: (
@@ -38,12 +40,13 @@ const features = [
         alt="OLED"
         width={90}
         height={90}
-        className="w-22.5 h-22.5 object-contain"
+        className="w-22.5 h-22.5 object-contain invert dark:invert-0 transition-all duration-500"
       />
     ),
     title:
       'Màn hình ROG Nebula HDR với tấm nền OLED, 3K 120Hz/0.2ms, 100% DCI-P3, độ sáng tối đa 1100 nits và đạt chứng nhận VESA HDR TrueBlack 1000',
     linkText: 'đọc thêm về màn hình',
+    href: '#parallax',
   },
   {
     icon: (
@@ -52,12 +55,13 @@ const features = [
         alt="Design"
         width={90}
         height={90}
-        className="w-22.5 h-22.5 object-contain"
+        className="w-22.5 h-22.5 object-contain invert dark:invert-0 transition-all duration-500"
       />
     ),
     title:
       'Thiết kế siêu mỏng chỉ 1.59cm, trọng lượng từ 1.5kg, hỗ trợ USB Type-C với DP 2.1 và PD 3.0',
     linkText: 'đọc thêm về tính di động',
+    href: '#portability',
   },
   {
     icon: (
@@ -66,12 +70,13 @@ const features = [
         alt="Cooling"
         width={90}
         height={90}
-        className="w-22.5 h-22.5 object-contain"
+        className="w-22.5 h-22.5 object-contain invert dark:invert-0 transition-all duration-500"
       />
     ),
     title:
       'Ống dẫn nhiệt hiệu năng cao, Công nghệ ba quạt* và thiết kế khe thoát cải tiến\n*Tùy Model',
     linkText: 'đọc thêm về tản nhiệt',
+    href: '#cooling',
   },
   {
     icon: (
@@ -85,6 +90,7 @@ const features = [
     ),
     title: 'Đạt chuẩn Copilot+ PC với khả năng xử lý AI trên cả CPU và GPU',
     linkText: 'đọc thêm về hiệu năng',
+    href: '#performance',
   },
 ];
 
@@ -98,6 +104,20 @@ const itemVariants: Variants = {
 };
 
 export function HeroFeatures() {
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (href && href.startsWith('#') && href !== '#') {
+      e.preventDefault();
+      const id = href.substring(1);
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <motion.div
       variants={itemVariants}
@@ -118,7 +138,8 @@ export function HeroFeatures() {
           </div>
           <div className="mt-auto">
             <a
-              href="#"
+              href={feature.href || '#'}
+              onClick={(e) => handleScroll(e, feature.href || '#')}
               className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors flex items-center justify-between"
             >
               {feature.linkText}

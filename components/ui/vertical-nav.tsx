@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
-
 const sections = [
   { id: 'hero', label: 'TỔNG QUAN' },
   { id: 'performance', label: 'HIỆU NĂNG' },
@@ -11,6 +10,8 @@ const sections = [
   { id: 'design', label: 'THIẾT KẾ' },
   { id: 'cooling', label: 'TẢN NHIỆT' },
   { id: 'control', label: 'ĐIỀU KHIỂN' },
+  { id: 'portability', label: 'TÍNH DI ĐỘNG' },
+  { id: 'faq', label: 'FAQ' },
 ];
 
 export function VerticalNav() {
@@ -75,10 +76,10 @@ export function VerticalNav() {
             >
               <span
                 className={cn(
-                  "absolute right-12 whitespace-nowrap text-[10px] font-bold tracking-widest text-zinc-900 dark:text-zinc-100 pointer-events-none bg-white/70 dark:bg-zinc-900/50 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/50 dark:border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.8)] dark:shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all duration-300",
+                  'absolute right-12 whitespace-nowrap text-[10px] font-bold tracking-widest text-zinc-900 dark:text-zinc-100 pointer-events-none bg-white/70 dark:bg-zinc-900/50 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/50 dark:border-white/10 shadow-[0_0_15px_rgba(255,255,255,0.8)] dark:shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all duration-300',
                   isActive
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0"
+                    ? 'opacity-100 translate-x-0'
+                    : 'opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0',
                 )}
               >
                 {section.label}

@@ -10,6 +10,9 @@ import { OledFeaturesSection } from '@/components/sections/oled-features-section
 import { CoolingSection } from '@/components/sections/cooling-section';
 import { ControlSection } from '@/components/sections/control-section';
 import { DesignSection } from '@/components/sections/design-section';
+import { PortabilitySection } from '@/components/sections/portability-section';
+import { FaqSection } from '@/components/sections/faq-section';
+import { NewsletterSection } from '@/components/sections/newsletter-section';
 
 export default function Home() {
   return (
@@ -52,6 +55,15 @@ export default function Home() {
       <CoolingSection />
       
       <ControlSection />
+
+      {/* Portability Section */}
+      <PortabilitySection />
+
+      {/* FAQ Section */}
+      <FaqSection />
+
+      {/* Newsletter Section */}
+      <NewsletterSection />
     </main>
   );
 }
