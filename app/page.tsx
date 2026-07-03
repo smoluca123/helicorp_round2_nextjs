@@ -1,18 +1,20 @@
+import dynamic from 'next/dynamic';
 import { HeroSection } from '@/components/sections/hero-section';
 import { VerticalNav } from '@/components/ui/vertical-nav';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
-import { UseCasesSection } from '@/components/sections/use-cases-section';
-import { PerformanceSection } from '@/components/sections/performance-section';
-import { PerformanceCarousel } from '@/components/sections/performance/performance-carousel';
-import { ScrollytellingSection } from '@/components/sections/scrollytelling-section';
-import { OledDisplaySection } from '@/components/sections/oled-display-section';
-import { OledFeaturesSection } from '@/components/sections/oled-features-section';
-import { CoolingSection } from '@/components/sections/cooling-section';
-import { ControlSection } from '@/components/sections/control-section';
-import { DesignSection } from '@/components/sections/design-section';
-import { PortabilitySection } from '@/components/sections/portability-section';
-import { FaqSection } from '@/components/sections/faq-section';
-import { NewsletterSection } from '@/components/sections/newsletter-section';
+
+const UseCasesSection = dynamic(() => import('@/components/sections/use-cases-section').then(mod => mod.UseCasesSection));
+const PerformanceSection = dynamic(() => import('@/components/sections/performance-section').then(mod => mod.PerformanceSection));
+const PerformanceCarousel = dynamic(() => import('@/components/sections/performance/performance-carousel').then(mod => mod.PerformanceCarousel));
+const ScrollytellingSection = dynamic(() => import('@/components/sections/scrollytelling-section').then(mod => mod.ScrollytellingSection));
+const OledDisplaySection = dynamic(() => import('@/components/sections/oled-display-section').then(mod => mod.OledDisplaySection));
+const OledFeaturesSection = dynamic(() => import('@/components/sections/oled-features-section').then(mod => mod.OledFeaturesSection));
+const CoolingSection = dynamic(() => import('@/components/sections/cooling-section').then(mod => mod.CoolingSection));
+const ControlSection = dynamic(() => import('@/components/sections/control-section').then(mod => mod.ControlSection));
+const DesignSection = dynamic(() => import('@/components/sections/design-section').then(mod => mod.DesignSection));
+const PortabilitySection = dynamic(() => import('@/components/sections/portability-section').then(mod => mod.PortabilitySection));
+const FaqSection = dynamic(() => import('@/components/sections/faq-section').then(mod => mod.FaqSection));
+const NewsletterSection = dynamic(() => import('@/components/sections/newsletter-section').then(mod => mod.NewsletterSection));
 
 export default function Home() {
   return (
