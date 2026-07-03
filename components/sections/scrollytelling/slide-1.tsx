@@ -10,7 +10,6 @@ export function Slide1Content() {
         alt="Zephyrus G14 Performance"
         fill
         className="object-cover object-[70%_center] md:object-right z-0"
-        priority
       />
       <div className="w-full max-w-7xl mx-auto h-full flex items-center relative z-10">
         <div className="flex flex-col justify-center text-white max-w-[85vw] sm:max-w-xl h-full pt-10 md:pt-0 px-6 md:px-0">

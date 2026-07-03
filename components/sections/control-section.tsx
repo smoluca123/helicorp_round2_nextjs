@@ -16,7 +16,6 @@ export function ControlSection() {
             width={2560}
             height={1440}
             className="w-full h-auto object-cover block"
-            priority
           />
         </div>
 

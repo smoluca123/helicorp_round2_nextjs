@@ -1,0 +1,9 @@
+// Cấu hình chung cho toàn bộ Schema
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "cockroachdb"
+}

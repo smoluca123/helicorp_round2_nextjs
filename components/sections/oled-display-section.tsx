@@ -54,7 +54,6 @@ export function OledDisplaySection() {
               alt="Display Background"
               fill
               className="object-cover opacity-50 md:opacity-70"
-              priority
             />
             {/* Gradient overlay để hòa trộn với các section khác và giúp text dễ đọc hơn */}
             <div className="absolute inset-0 bg-linear-to-b from-zinc-50/90 via-transparent to-zinc-50 dark:from-[#0a0a0a]/80 dark:via-transparent dark:to-[#0a0a0a] transition-colors duration-500"></div>
@@ -102,7 +101,6 @@ export function OledDisplaySection() {
                     alt="Zephyrus G14 Laptop Frame"
                     fill
                     className="object-contain drop-shadow-[0_40px_60px_rgba(0,0,0,0.8)] dark:drop-shadow-[0_40px_60px_rgba(255,255,255,0.05)]"
-                    priority
                   />
                 </div>
 

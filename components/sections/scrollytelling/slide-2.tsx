@@ -11,7 +11,6 @@ export function Slide2Content() {
         alt="NVIDIA Background"
         fill
         className="object-cover z-0"
-        priority
       />
       <div className="flex flex-col items-center justify-center w-full h-full relative z-10 px-6 md:px-0">
         {/* Header */}
