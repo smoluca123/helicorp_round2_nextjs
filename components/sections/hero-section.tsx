@@ -6,9 +6,8 @@ import { HeroBackground } from './hero/hero-background';
 import { HeroFeatures } from './hero/hero-features';
 
 const containerVariants: Variants = {
-  hidden: { opacity: 0 },
+  hidden: {},
   visible: {
-    opacity: 1,
     transition: {
       staggerChildren: 0.1,
       delayChildren: 0.2,
@@ -37,8 +36,8 @@ export function HeroSection() {
         initial="hidden"
         animate="visible"
       >
-        {/* Main Title */}
-        <motion.div variants={itemVariants} className="mb-2">
+        {/* Main Title - Rendered instantly for LCP */}
+        <motion.div className="mb-2">
           <h1
             className="text-4xl md:text-5xl lg:text-[4rem] font-black tracking-widest text-zinc-900 dark:text-white uppercase uppercase-rog drop-shadow-sm"
             style={{ fontFamily: 'var(--font-sans)' }}
@@ -47,8 +46,8 @@ export function HeroSection() {
           </h1>
         </motion.div>
 
-        {/* Subtitle */}
-        <motion.div variants={itemVariants} className="mb-8">
+        {/* Subtitle - Rendered instantly for LCP */}
+        <motion.div className="mb-8">
           <p className="text-lg md:text-xl font-medium tracking-[0.2em] text-zinc-600 dark:text-zinc-300 uppercase">
             ĐỈNH HIỆU NĂNG. BẬC PHONG CÁCH{' '}
             <span className="text-sm tracking-normal text-zinc-400">
