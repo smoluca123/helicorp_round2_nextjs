@@ -2,11 +2,11 @@ import dynamic from 'next/dynamic';
 import { HeroSection } from '@/components/sections/hero-section';
 import { VerticalNav } from '@/components/ui/vertical-nav';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
+import { UseCasesSection } from '@/components/sections/use-cases-section';
+import { PerformanceSection } from '@/components/sections/performance-section';
+import { PerformanceCarousel } from '@/components/sections/performance/performance-carousel';
+import { ScrollytellingSection } from '@/components/sections/scrollytelling-section';
 
-const UseCasesSection = dynamic(() => import('@/components/sections/use-cases-section').then(mod => mod.UseCasesSection));
-const PerformanceSection = dynamic(() => import('@/components/sections/performance-section').then(mod => mod.PerformanceSection));
-const PerformanceCarousel = dynamic(() => import('@/components/sections/performance/performance-carousel').then(mod => mod.PerformanceCarousel));
-const ScrollytellingSection = dynamic(() => import('@/components/sections/scrollytelling-section').then(mod => mod.ScrollytellingSection));
 const OledDisplaySection = dynamic(() => import('@/components/sections/oled-display-section').then(mod => mod.OledDisplaySection));
 const OledFeaturesSection = dynamic(() => import('@/components/sections/oled-features-section').then(mod => mod.OledFeaturesSection));
 const CoolingSection = dynamic(() => import('@/components/sections/cooling-section').then(mod => mod.CoolingSection));
