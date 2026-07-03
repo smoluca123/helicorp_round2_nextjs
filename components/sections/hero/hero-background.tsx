@@ -18,7 +18,6 @@ export function HeroBackground() {
             alt="ROG Zephyrus G14 Light"
             fill
             className="object-cover object-top"
-            priority
             sizes="100vw"
             quality={60}
           />

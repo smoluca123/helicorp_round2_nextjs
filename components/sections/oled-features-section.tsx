@@ -244,7 +244,6 @@ export function OledFeaturesSection() {
               alt="OLED Background"
               fill
               className="object-cover"
-              priority={idx === 0}
             />
           </div>
         ))}

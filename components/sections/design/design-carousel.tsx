@@ -61,6 +61,9 @@ export function DesignCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
+  const tabsContainerRef = useRef<HTMLDivElement>(null);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
   const onSelect = useCallback(() => {
     if (!api) return;
     setActiveIndex(api.selectedScrollSnap());
@@ -80,7 +83,7 @@ export function DesignCarousel() {
     };
   }, [api, onSelect]);
 
-  // Handle video autoplay for the active slide
+  // Handle video autoplay for the active slide and tab scroll
   useEffect(() => {
     carouselItems.forEach((item, index) => {
       const video = videoRefs.current[index];
@@ -93,6 +96,27 @@ export function DesignCarousel() {
         }
       }
     });
+
+    // Auto-scroll the tabs container on mobile so the active tab is visible
+    const container = tabsContainerRef.current;
+    const activeTab = tabRefs.current[activeIndex];
+    
+    if (container && activeTab) {
+      const containerRect = container.getBoundingClientRect();
+      const tabRect = activeTab.getBoundingClientRect();
+      
+      // Calculate how much to scroll to center the active tab
+      const scrollPos = 
+        container.scrollLeft + 
+        (tabRect.left - containerRect.left) - 
+        (containerRect.width / 2) + 
+        (tabRect.width / 2);
+        
+      container.scrollTo({
+        left: scrollPos,
+        behavior: 'smooth'
+      });
+    }
   }, [activeIndex]);
 
   const handleTabClick = (index: number) => {
@@ -153,13 +177,19 @@ export function DesignCarousel() {
       </Carousel>
 
       {/* Tabs UI */}
-      <div className="w-full px-4 overflow-x-auto no-scrollbar max-w-7xl mx-auto mb-12">
+      <div 
+        ref={tabsContainerRef}
+        className="w-full px-4 overflow-x-auto no-scrollbar max-w-7xl mx-auto mb-12 scroll-smooth"
+      >
         <div className="flex w-max min-w-full justify-between border-b border-zinc-800">
           {carouselItems.map((item, index) => {
             const isActive = activeIndex === index;
             return (
               <button
                 key={item.id}
+                ref={(el) => {
+                  tabRefs.current[index] = el;
+                }}
                 onClick={() => handleTabClick(index)}
                 className={cn(
                   'relative flex-1 min-w-30 pb-4 px-4 text-center transition-colors duration-300 group outline-none',

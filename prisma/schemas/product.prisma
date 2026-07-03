@@ -1,0 +1,47 @@
+enum ProductStatus {
+  AVAILABLE
+  OUT_OF_STOCK
+  COMING_SOON
+}
+
+model Product {
+  id          String        @id @default(cuid())
+  name        String
+  slug        String        @unique
+  description String?
+  status      ProductStatus @default(COMING_SOON)
+
+  // Tham chiếu đến Media (Ảnh đại diện sản phẩm)
+  coverImageId String?
+  coverImage   Media?  @relation(fields: [coverImageId], references: [id])
+
+  variants              ProductVariant[]
+  cartItems             CartItem[]
+  wishlistItems         WishlistItem[]
+  newsletterSubscribers NewsletterSubscription[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("products")
+}
+
+model ProductVariant {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  colorName String // vd: "Eclipse Gray", "Moonlight White"
+  colorHex  String? // vd: "#000000"
+  price     Float // Giá tiền cho biến thể này
+  stock     Int     @default(0) // Tồn kho
+
+  // Tham chiếu đến Media (Ảnh của biến thể màu này)
+  imageId String?
+  image   Media?  @relation(fields: [imageId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("product_variants")
+}

@@ -40,7 +40,10 @@ export function NewsletterSection() {
   };
 
   return (
-    <section className="relative w-full bg-zinc-50 dark:bg-[#030303] py-32 md:py-48 flex flex-col items-center justify-center overflow-hidden transition-colors duration-500">
+    <section
+      className="relative w-full bg-zinc-50 dark:bg-[#030303] py-32 md:py-48 flex flex-col items-center justify-center overflow-hidden transition-colors duration-500"
+      id="newsletter"
+    >
       {/* Background Decorative Elements */}
       <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
         {/* Subtle radial gradient */}
@@ -144,21 +147,23 @@ export function NewsletterSection() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="relative flex items-center w-full bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-full p-1.5 backdrop-blur-md focus-within:ring-1 focus-within:ring-zinc-400 dark:focus-within:ring-zinc-700 transition-all shadow-xl dark:shadow-2xl"
+                  className="w-full flex flex-col sm:flex-row items-center gap-3 sm:gap-0 sm:bg-white/80 sm:dark:bg-zinc-900/60 sm:border sm:border-zinc-200 sm:dark:border-zinc-800 sm:rounded-full sm:p-1.5 sm:backdrop-blur-md sm:focus-within:ring-1 sm:focus-within:ring-zinc-400 sm:dark:focus-within:ring-zinc-700 transition-all sm:shadow-xl sm:dark:shadow-2xl"
                 >
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="your@email.com"
-                    required
-                    className="grow bg-transparent border-none outline-none text-zinc-900 dark:text-white px-6 py-3 placeholder:text-zinc-500 dark:placeholder:text-zinc-600 font-medium transition-colors duration-500"
-                    disabled={status === 'loading'}
-                  />
+                  <div className="w-full sm:grow flex items-center bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 sm:bg-transparent sm:border-none rounded-full sm:rounded-none p-1.5 sm:p-0 backdrop-blur-md sm:backdrop-blur-none shadow-xl dark:shadow-2xl sm:shadow-none focus-within:ring-1 focus-within:ring-zinc-400 dark:focus-within:ring-zinc-700 sm:focus-within:ring-0 transition-all">
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="your@email.com"
+                      required
+                      className="w-full min-w-0 bg-transparent border-none outline-none text-zinc-900 dark:text-white px-5 sm:px-6 py-3 placeholder:text-zinc-500 dark:placeholder:text-zinc-600 font-medium transition-colors duration-500"
+                      disabled={status === 'loading'}
+                    />
+                  </div>
                   <Button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="h-12 px-6 rounded-full bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-black font-semibold transition-all duration-300 flex items-center gap-2 group shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:shadow-[0_0_20px_rgba(255,255,255,0.2)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
+                    className="w-full sm:w-auto h-12 px-6 rounded-full bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-black font-semibold transition-all duration-300 flex items-center justify-center gap-2 group shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:shadow-[0_0_20px_rgba(255,255,255,0.2)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] flex-shrink-0"
                   >
                     {status === 'loading' ? (
                       <motion.div
@@ -191,7 +196,7 @@ export function NewsletterSection() {
           transition={{ duration: 1, delay: 0.6 }}
           className="flex flex-col items-center gap-4"
         >
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center">
             <div className="flex -space-x-2">
               {['NT', 'LH', 'PD', 'TK'].map((initial, i) => (
                 <div
@@ -202,7 +207,7 @@ export function NewsletterSection() {
                 </div>
               ))}
             </div>
-            <div className="text-sm text-zinc-500 dark:text-zinc-400 transition-colors duration-500">
+            <div className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 transition-colors duration-500 max-w-[200px] sm:max-w-none">
               <span className="font-semibold text-zinc-900 dark:text-white">
                 347
               </span>{' '}
