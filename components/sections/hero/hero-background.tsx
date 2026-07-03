@@ -17,9 +17,9 @@ export function HeroBackground() {
             src="/assets/images/01__kv_reverse.webp"
             alt="ROG Zephyrus G14 Light"
             fill
+            priority
             className="object-cover object-top"
             sizes="100vw"
-            quality={60}
           />
         </div>
 

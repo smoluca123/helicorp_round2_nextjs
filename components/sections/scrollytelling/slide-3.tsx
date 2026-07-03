@@ -11,7 +11,6 @@ export function Slide3Content() {
         alt="NVIDIA AI Power"
         fill
         className="object-cover object-center z-0"
-        quality={65}
         sizes="100vw"
       />
 
