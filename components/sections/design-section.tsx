@@ -13,7 +13,8 @@ export function DesignSection() {
             alt="Design Background"
             fill
             className="object-cover object-center"
-            priority
+            quality={65}
+            sizes="100vw"
           />
         </div>
 

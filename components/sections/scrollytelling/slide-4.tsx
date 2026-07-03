@@ -13,7 +13,8 @@ export function Slide4Content() {
             alt="Biên Tập Video Nhanh Và Mượt Hơn"
             fill
             className="object-contain object-center"
-            priority
+            quality={65}
+            sizes="(max-width: 1024px) 100vw, 50vw"
           />
         </div>
 

@@ -1,18 +1,89 @@
+import dynamic from 'next/dynamic';
 import { HeroSection } from '@/components/sections/hero-section';
 import { VerticalNav } from '@/components/ui/vertical-nav';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
 import { UseCasesSection } from '@/components/sections/use-cases-section';
 import { PerformanceSection } from '@/components/sections/performance-section';
-import { PerformanceCarousel } from '@/components/sections/performance/performance-carousel';
-import { ScrollytellingSection } from '@/components/sections/scrollytelling-section';
-import { OledDisplaySection } from '@/components/sections/oled-display-section';
-import { OledFeaturesSection } from '@/components/sections/oled-features-section';
-import { CoolingSection } from '@/components/sections/cooling-section';
-import { ControlSection } from '@/components/sections/control-section';
-import { DesignSection } from '@/components/sections/design-section';
-import { PortabilitySection } from '@/components/sections/portability-section';
-import { FaqSection } from '@/components/sections/faq-section';
-import { NewsletterSection } from '@/components/sections/newsletter-section';
+
+// Lazy-load below-the-fold sections to reduce initial JS bundle
+// These sections are not visible on first paint, so they don't need to be in the critical path
+const PerformanceCarousel = dynamic(
+  () =>
+    import('@/components/sections/performance/performance-carousel').then(
+      (m) => m.PerformanceCarousel,
+    ),
+  { ssr: true },
+);
+
+const ScrollytellingSection = dynamic(
+  () =>
+    import('@/components/sections/scrollytelling-section').then(
+      (m) => m.ScrollytellingSection,
+    ),
+  { ssr: true },
+);
+
+const OledDisplaySection = dynamic(
+  () =>
+    import('@/components/sections/oled-display-section').then(
+      (m) => m.OledDisplaySection,
+    ),
+  { ssr: true },
+);
+
+const OledFeaturesSection = dynamic(
+  () =>
+    import('@/components/sections/oled-features-section').then(
+      (m) => m.OledFeaturesSection,
+    ),
+  { ssr: true },
+);
+
+const DesignSection = dynamic(
+  () =>
+    import('@/components/sections/design-section').then(
+      (m) => m.DesignSection,
+    ),
+  { ssr: true },
+);
+
+const CoolingSection = dynamic(
+  () =>
+    import('@/components/sections/cooling-section').then(
+      (m) => m.CoolingSection,
+    ),
+  { ssr: true },
+);
+
+const ControlSection = dynamic(
+  () =>
+    import('@/components/sections/control-section').then(
+      (m) => m.ControlSection,
+    ),
+  { ssr: true },
+);
+
+const PortabilitySection = dynamic(
+  () =>
+    import('@/components/sections/portability-section').then(
+      (m) => m.PortabilitySection,
+    ),
+  { ssr: true },
+);
+
+const FaqSection = dynamic(
+  () =>
+    import('@/components/sections/faq-section').then((m) => m.FaqSection),
+  { ssr: true },
+);
+
+const NewsletterSection = dynamic(
+  () =>
+    import('@/components/sections/newsletter-section').then(
+      (m) => m.NewsletterSection,
+    ),
+  { ssr: true },
+);
 
 export default function Home() {
   return (
@@ -21,15 +92,15 @@ export default function Home() {
       <ThemeToggle />
       <VerticalNav />
 
-      {/* Hero Section */}
+      {/* Hero Section — critical, loaded eagerly */}
       <div id="hero" className="w-full">
         <HeroSection />
       </div>
 
-      {/* Use Cases (Gaming / Sáng tạo / Hiệu suất) */}
+      {/* Use Cases — just below the fold, load eagerly for fast scroll */}
       <UseCasesSection />
 
-      {/* Performance Section (Header & Specs) */}
+      {/* Performance Section — header & specs */}
       <PerformanceSection />
 
       {/* Scrollytelling Section */}
@@ -43,7 +114,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* OLED Display Section (Scroll zoom out) */}
+      {/* OLED Display Section */}
       <OledDisplaySection />
 
       {/* OLED Features Scrollytelling */}
@@ -53,7 +124,7 @@ export default function Home() {
       <DesignSection />
 
       <CoolingSection />
-      
+
       <ControlSection />
 
       {/* Portability Section */}
