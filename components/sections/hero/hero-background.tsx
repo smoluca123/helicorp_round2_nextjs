@@ -19,7 +19,7 @@ export function HeroBackground() {
             fill
             priority
             className="object-cover object-top"
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
           />
         </div>
 
@@ -31,7 +31,7 @@ export function HeroBackground() {
             fill
             className="object-cover object-top"
             priority
-            sizes="100vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
           />
         </div>
       </div>

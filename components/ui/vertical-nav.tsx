@@ -3,13 +3,7 @@
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
-import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from '@/components/ui/drawer';
+
 
 const sections = [
   { id: 'hero', label: 'TỔNG QUAN' },
@@ -113,48 +107,47 @@ export function VerticalNav() {
         <div className="mt-8 h-12 w-px bg-red-600/50" />
       </div>
 
-      {/* Mobile Drawer (Shadcn) */}
+      {/* Mobile Custom Overlay Menu */}
       <div className="md:hidden">
-        <Drawer open={isOpen} onOpenChange={setIsOpen}>
-          <DrawerTrigger asChild>
-            <button
-              className="fixed top-6 right-6 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-zinc-200/50 dark:border-zinc-800/50 shadow-lg text-zinc-900 dark:text-white transition-all duration-300 outline-none hover:scale-105 active:scale-95"
-              aria-label="Toggle Menu"
-            >
-              <Menu className="w-5 h-5" />
-            </button>
-          </DrawerTrigger>
-          <DrawerContent className="bg-zinc-50/98 dark:bg-[#030303]/98 backdrop-blur-2xl border-t-zinc-200/50 dark:border-t-zinc-800/50 outline-none">
-            <div className="mx-auto w-full max-w-sm">
-              <DrawerHeader className="sr-only">
-                <DrawerTitle>Navigation Menu</DrawerTitle>
-              </DrawerHeader>
-              <div className="p-6 pb-12 flex flex-col items-center gap-6 w-full mt-4">
-                {sections.map((section, index) => {
-                  const isActive = index === activeIndex;
+        {/* Toggle Button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="fixed top-6 right-6 z-50 flex items-center justify-center w-12 h-12 rounded-full bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md border border-zinc-200/50 dark:border-zinc-800/50 shadow-lg text-zinc-900 dark:text-white transition-all duration-300 outline-none hover:scale-105 active:scale-95"
+          aria-label="Toggle Menu"
+        >
+          {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
 
-                  return (
-                    <button
-                      key={section.id}
-                      onClick={() => {
-                        scrollTo(section.id);
-                        setIsOpen(false);
-                      }}
-                      className={cn(
-                        'text-xl sm:text-2xl font-black tracking-widest uppercase transition-all duration-300 outline-none',
-                        isActive
-                          ? 'text-zinc-900 dark:text-white scale-110 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]'
-                          : 'text-zinc-400 dark:text-zinc-600 hover:text-zinc-700 dark:hover:text-zinc-400',
-                      )}
-                    >
-                      {section.label}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </DrawerContent>
-        </Drawer>
+        {/* Full-screen Overlay */}
+        <div
+          className={cn(
+            'fixed inset-0 z-40 flex flex-col items-center justify-center bg-zinc-50/98 dark:bg-[#030303]/98 backdrop-blur-2xl transition-all duration-300 ease-in-out',
+            isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          )}
+        >
+          <div className="flex flex-col items-center gap-6 w-full px-6">
+            {sections.map((section, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <button
+                  key={section.id}
+                  onClick={() => {
+                    setIsOpen(false);
+                    scrollTo(section.id);
+                  }}
+                  className={cn(
+                    'text-xl sm:text-2xl font-black tracking-widest uppercase transition-all duration-300 outline-none',
+                    isActive
+                      ? 'text-zinc-900 dark:text-white scale-110 drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]'
+                      : 'text-zinc-400 dark:text-zinc-600 hover:text-zinc-700 dark:hover:text-zinc-400',
+                  )}
+                >
+                  {section.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </>
   );

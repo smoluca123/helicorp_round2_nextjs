@@ -163,7 +163,7 @@ export function NewsletterSection() {
                   <Button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="w-full sm:w-auto h-12 px-6 rounded-full bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-black font-semibold transition-all duration-300 flex items-center justify-center gap-2 group shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:shadow-[0_0_20px_rgba(255,255,255,0.2)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] flex-shrink-0"
+                    className="w-full sm:w-auto h-12 px-6 rounded-full bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-black font-semibold transition-all duration-300 flex items-center justify-center gap-2 group shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:shadow-[0_0_20px_rgba(255,255,255,0.2)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] shrink-0"
                   >
                     {status === 'loading' ? (
                       <motion.div
@@ -207,7 +207,7 @@ export function NewsletterSection() {
                 </div>
               ))}
             </div>
-            <div className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 transition-colors duration-500 max-w-[200px] sm:max-w-none">
+            <div className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 transition-colors duration-500 max-w-50 sm:max-w-none">
               <span className="font-semibold text-zinc-900 dark:text-white">
                 347
               </span>{' '}
