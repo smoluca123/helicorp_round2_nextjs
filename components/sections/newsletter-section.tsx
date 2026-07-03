@@ -1,0 +1,224 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import LightRays from '@/components/LightRays';
+import ShinyText from '@/components/ui/ShinyText';
+import { useTheme } from 'next-themes';
+
+export function NewsletterSection() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const timer = requestAnimationFrame(() => {
+      setMounted(true);
+    });
+    return () => cancelAnimationFrame(timer);
+  }, []);
+
+  const handleSubmit = (e: React.SubmitEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setStatus('loading');
+
+    // Simulate API call
+    setTimeout(() => {
+      setStatus('success');
+      setEmail('');
+
+      // Reset after 3 seconds
+      setTimeout(() => {
+        setStatus('idle');
+      }, 3000);
+    }, 1500);
+  };
+
+  return (
+    <section className="relative w-full bg-zinc-50 dark:bg-[#030303] py-32 md:py-48 flex flex-col items-center justify-center overflow-hidden transition-colors duration-500">
+      {/* Background Decorative Elements */}
+      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
+        {/* Subtle radial gradient */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-200 bg-zinc-400/10 dark:bg-zinc-500/5 rounded-full blur-[120px] transition-colors duration-500" />
+
+        {/* LightRays Component */}
+        <div className="absolute inset-0 w-full h-full opacity-60 dark:opacity-40">
+          <LightRays
+            raysOrigin="top-center"
+            raysColor={
+              mounted && resolvedTheme === 'dark' ? '#ffffff' : '#71717a'
+            }
+            raysSpeed={1.5}
+            pulsating={true}
+            rayLength={3}
+            fadeDistance={0.8}
+            mouseInfluence={0.1}
+          />
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10 max-w-3xl flex flex-col items-center text-center">
+        {/* Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-8"
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-200/50 dark:bg-zinc-900/40 border border-zinc-300/50 dark:border-zinc-800/50 backdrop-blur-md transition-colors duration-500">
+            <Sparkles className="w-4 h-4 text-zinc-700 dark:text-zinc-300" />
+            <span className="text-sm font-medium text-zinc-900 dark:text-zinc-200 transition-colors duration-500">
+              Đặc quyền ROG — Giới hạn 500 suất
+            </span>
+          </div>
+        </motion.div>
+
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="mb-6"
+        >
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-zinc-900 dark:text-white mb-2 font-display transition-colors duration-500">
+            Sẵn sàng khai phóng <br className="hidden md:block" />
+            <ShinyText
+              text="giới hạn?"
+              speed={2.5}
+              delay={0}
+              color="currentColor"
+              shineColor={
+                mounted && resolvedTheme === 'dark' ? '#ffffff' : '#000000'
+              }
+              className="text-zinc-500 dark:text-zinc-400 transition-colors duration-500"
+            />
+          </h2>
+        </motion.div>
+
+        {/* Subtitle */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-zinc-600 dark:text-zinc-400 text-lg md:text-xl max-w-2xl mb-12 transition-colors duration-500"
+        >
+          Đăng ký waitlist để nhận đặc quyền Early Bird —{' '}
+          <br className="hidden md:block" />
+          giảm giá độc quyền và giao hàng ưu tiên.
+        </motion.p>
+
+        {/* Form */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="w-full max-w-lg mb-8"
+        >
+          <form onSubmit={handleSubmit} className="relative w-full">
+            <AnimatePresence mode="wait">
+              {status === 'success' ? (
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="flex items-center justify-center gap-3 w-full p-2 bg-emerald-50/80 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900/50 rounded-full h-16 transition-colors duration-500"
+                >
+                  <CheckCircle2 className="w-6 h-6 text-emerald-600 dark:text-emerald-400" />
+                  <span className="font-medium text-emerald-700 dark:text-emerald-200 transition-colors duration-500">
+                    Đăng ký thành công! Bạn đã vào danh sách.
+                  </span>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="form"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="relative flex items-center w-full bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 rounded-full p-1.5 backdrop-blur-md focus-within:ring-1 focus-within:ring-zinc-400 dark:focus-within:ring-zinc-700 transition-all shadow-xl dark:shadow-2xl"
+                >
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="your@email.com"
+                    required
+                    className="grow bg-transparent border-none outline-none text-zinc-900 dark:text-white px-6 py-3 placeholder:text-zinc-500 dark:placeholder:text-zinc-600 font-medium transition-colors duration-500"
+                    disabled={status === 'loading'}
+                  />
+                  <Button
+                    type="submit"
+                    disabled={status === 'loading'}
+                    className="h-12 px-6 rounded-full bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-black font-semibold transition-all duration-300 flex items-center gap-2 group shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:shadow-[0_0_20px_rgba(255,255,255,0.2)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]"
+                  >
+                    {status === 'loading' ? (
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{
+                          duration: 1,
+                          repeat: Infinity,
+                          ease: 'linear',
+                        }}
+                        className="w-5 h-5 border-2 border-current border-t-transparent rounded-full"
+                      />
+                    ) : (
+                      <>
+                        <span>Đăng ký ngay</span>
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </>
+                    )}
+                  </Button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </form>
+        </motion.div>
+
+        {/* Social Proof */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.6 }}
+          className="flex flex-col items-center gap-4"
+        >
+          <div className="flex items-center gap-4">
+            <div className="flex -space-x-2">
+              {['NT', 'LH', 'PD', 'TK'].map((initial, i) => (
+                <div
+                  key={i}
+                  className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 border-2 border-white dark:border-[#030303] flex items-center justify-center text-[10px] font-bold text-zinc-500 dark:text-zinc-300 transition-colors duration-500"
+                >
+                  {initial}
+                </div>
+              ))}
+            </div>
+            <div className="text-sm text-zinc-500 dark:text-zinc-400 transition-colors duration-500">
+              <span className="font-semibold text-zinc-900 dark:text-white">
+                347
+              </span>{' '}
+              người đã đăng ký · còn{' '}
+              <span className="font-semibold text-blue-600 dark:text-blue-400">
+                153
+              </span>{' '}
+              suất Early Bird
+            </div>
+          </div>
+
+          <p className="text-xs text-zinc-400 dark:text-zinc-600 mt-2 transition-colors duration-500">
+            Không spam. Hủy đăng ký bất kỳ lúc nào.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}

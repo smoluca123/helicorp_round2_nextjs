@@ -35,7 +35,7 @@ export function PerformanceHeader() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: '-100px' }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base lg:text-lg leading-relaxed mb-24 max-w-4xl transition-colors duration-500"
+        className="text-zinc-600 dark:text-zinc-400 text-sm md:text-base leading-relaxed mb-24 max-w-4xl transition-colors duration-500"
       >
         Chơi game, sáng tạo và cộng tác dễ dàng trên cỗ máy chạy Windows 11
         Home Single Language thế hệ tiếp theo này. Được trang bị bộ vi xử lý

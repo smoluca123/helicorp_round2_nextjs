@@ -5,6 +5,14 @@ import { UseCasesSection } from '@/components/sections/use-cases-section';
 import { PerformanceSection } from '@/components/sections/performance-section';
 import { PerformanceCarousel } from '@/components/sections/performance/performance-carousel';
 import { ScrollytellingSection } from '@/components/sections/scrollytelling-section';
+import { OledDisplaySection } from '@/components/sections/oled-display-section';
+import { OledFeaturesSection } from '@/components/sections/oled-features-section';
+import { CoolingSection } from '@/components/sections/cooling-section';
+import { ControlSection } from '@/components/sections/control-section';
+import { DesignSection } from '@/components/sections/design-section';
+import { PortabilitySection } from '@/components/sections/portability-section';
+import { FaqSection } from '@/components/sections/faq-section';
+import { NewsletterSection } from '@/components/sections/newsletter-section';
 
 export default function Home() {
   return (
@@ -35,43 +43,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Another Dummy Section */}
-      <section
-        id="parallax"
-        className="min-h-screen w-full flex items-center justify-center bg-zinc-200 dark:bg-zinc-950"
-      >
-        <h2 className="text-2xl font-bold text-zinc-700 dark:text-zinc-400">
-          More Parallax Sections Here
-        </h2>
-      </section>
+      {/* OLED Display Section (Scroll zoom out) */}
+      <OledDisplaySection />
 
-      {/* Additional dummy sections to fill out the nav items */}
-      <section
-        id="design"
-        className="min-h-screen w-full flex items-center justify-center bg-zinc-100 dark:bg-zinc-900"
-      >
-        <h2 className="text-2xl font-bold text-zinc-700 dark:text-zinc-400">
-          Design Section
-        </h2>
-      </section>
+      {/* OLED Features Scrollytelling */}
+      <OledFeaturesSection />
 
-      <section
-        id="cooling"
-        className="min-h-screen w-full flex items-center justify-center bg-zinc-200 dark:bg-zinc-950"
-      >
-        <h2 className="text-2xl font-bold text-zinc-700 dark:text-zinc-400">
-          Cooling Section
-        </h2>
-      </section>
+      {/* Design Section */}
+      <DesignSection />
 
-      <section
-        id="ai"
-        className="min-h-screen w-full flex items-center justify-center bg-zinc-100 dark:bg-zinc-900"
-      >
-        <h2 className="text-2xl font-bold text-zinc-700 dark:text-zinc-400">
-          AI & Copilot+ Section
-        </h2>
-      </section>
+      <CoolingSection />
+      
+      <ControlSection />
+
+      {/* Portability Section */}
+      <PortabilitySection />
+
+      {/* FAQ Section */}
+      <FaqSection />
+
+      {/* Newsletter Section */}
+      <NewsletterSection />
     </main>
   );
 }
