@@ -10,7 +10,8 @@ export function Slide5Content() {
         alt="Intel Core Ultra 9"
         fill
         className="object-cover object-[30%_center] md:object-left z-0"
-        priority
+        quality={65}
+        sizes="100vw"
       />
       <div className="w-full max-w-7xl mx-auto h-full flex items-center justify-end relative z-10">
         <div className="flex flex-col justify-center text-white max-w-[85vw] sm:max-w-xl h-full pt-10 md:pt-0 px-6 md:px-0">
