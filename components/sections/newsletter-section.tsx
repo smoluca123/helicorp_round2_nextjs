@@ -26,25 +26,28 @@ export function NewsletterSection() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
-  const [stats, setStats] = useState({ totalCount: 347, initials: ['NT', 'LH', 'PD', 'TK'] });
+  const [stats, setStats] = useState({
+    totalCount: 347,
+    initials: ['NT', 'LH', 'PD', 'TK'],
+  });
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => {
       setMounted(true);
     });
-    
+
     // Fetch stats
     fetch('/api/newsletter')
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         if (data && typeof data.totalCount === 'number') {
-           setStats({
-             totalCount: data.totalCount, // exact count from DB
-             initials: data.initials || ['NT', 'LH', 'PD', 'TK']
-           });
+          setStats({
+            totalCount: data.totalCount, // exact count from DB
+            initials: data.initials || ['NT', 'LH', 'PD', 'TK'],
+          });
         }
       })
-      .catch(err => console.error('Failed to fetch newsletter stats', err));
+      .catch((err) => console.error('Failed to fetch newsletter stats', err));
 
     return () => cancelAnimationFrame(timer);
   }, []);
@@ -229,7 +232,7 @@ export function NewsletterSection() {
                               type="email"
                               aria-invalid={fieldState.invalid}
                               placeholder="your@email.com"
-                              className="w-full h-12 sm:h-full min-h-12 min-w-0 bg-transparent! border-none! !rounded-full sm:!rounded-r-none outline-none text-zinc-900 dark:text-white px-5 sm:px-6 placeholder:text-zinc-500 dark:placeholder:text-zinc-600 font-medium transition-colors duration-500 shadow-none focus-visible:ring-0 [&:-webkit-autofill]:[transition:background-color_9999s_ease-in-out_0s] [&:-webkit-autofill]:[-webkit-text-fill-color:black] dark:[&:-webkit-autofill]:[-webkit-text-fill-color:white]"
+                              className="w-full h-12 sm:h-full min-h-12 min-w-0 bg-transparent! border-none! rounded-full! sm:rounded-r-none! outline-none text-center sm:text-left text-zinc-900 dark:text-white px-5 sm:px-6 placeholder:text-zinc-500 dark:placeholder:text-zinc-600 font-medium transition-colors duration-500 shadow-none focus-visible:ring-0 [&:-webkit-autofill]:[transition:background-color_9999s_ease-in-out_0s] [&:-webkit-autofill]:[-webkit-text-fill-color:black] dark:[&:-webkit-autofill]:[-webkit-text-fill-color:white]"
                               disabled={status === 'loading'}
                             />
                           </div>
