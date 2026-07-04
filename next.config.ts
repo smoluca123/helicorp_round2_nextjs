@@ -14,31 +14,6 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 604800,
     qualities: [60, 75],
   },
-
-  async headers() {
-    return [
-      {
-        // Apply long-term cache to all static assets in _next/static
-        source: '/_next/static/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        // Apply caching to public assets (images, fonts, etc.)
-        source: '/assets/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=604800, stale-while-revalidate=86400',
-          },
-        ],
-      },
-    ];
-  },
 };
 
 export default nextConfig;
