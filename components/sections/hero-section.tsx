@@ -1,5 +1,10 @@
 import { HeroBackground } from './hero/hero-background';
-import { HeroAnimatedContent } from './hero/hero-animated-content';
+import dynamic from 'next/dynamic';
+
+const HeroAnimatedContent = dynamic(
+  () => import('./hero/hero-animated-content').then((mod) => mod.HeroAnimatedContent),
+  { ssr: true }
+);
 
 export function HeroSection() {
   return (
