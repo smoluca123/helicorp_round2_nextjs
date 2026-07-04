@@ -52,3 +52,41 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
+function getInitials(email: string) {
+  const namePart = email.split('@')[0];
+  const parts = namePart.split(/[\.\-_]/);
+  if (parts.length >= 2) {
+    return (parts[0][0] + parts[1][0]).toUpperCase();
+  }
+  return namePart.substring(0, 2).toUpperCase();
+}
+
+export async function GET() {
+  try {
+    const totalCount = await prisma.newsletter.count();
+    
+    // get latest 4 subscribers
+    const latestSubscribers = await prisma.newsletter.findMany({
+      orderBy: { createdAt: 'desc' },
+      take: 4,
+      select: { email: true }
+    });
+
+    const defaultInitials = ['NT', 'LH', 'PD', 'TK'];
+    let initials = latestSubscribers.map(sub => getInitials(sub.email));
+    
+    // Fill the rest with defaults if not enough
+    if (initials.length < 4) {
+      initials = [...initials, ...defaultInitials.slice(initials.length, 4)];
+    }
+    
+    return NextResponse.json({ totalCount, initials });
+  } catch (error) {
+    console.error('Newsletter GET Error:', error);
+    return NextResponse.json(
+      { message: 'Đã xảy ra lỗi hệ thống.' },
+      { status: 500 },
+    );
+  }
+}

@@ -26,11 +26,26 @@ export function NewsletterSection() {
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [stats, setStats] = useState({ totalCount: 347, initials: ['NT', 'LH', 'PD', 'TK'] });
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => {
       setMounted(true);
     });
+    
+    // Fetch stats
+    fetch('/api/newsletter')
+      .then(res => res.json())
+      .then(data => {
+        if (data && typeof data.totalCount === 'number') {
+           setStats({
+             totalCount: data.totalCount, // exact count from DB
+             initials: data.initials || ['NT', 'LH', 'PD', 'TK']
+           });
+        }
+      })
+      .catch(err => console.error('Failed to fetch newsletter stats', err));
+
     return () => cancelAnimationFrame(timer);
   }, []);
 
@@ -267,7 +282,7 @@ export function NewsletterSection() {
         >
           <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 text-center">
             <div className="flex -space-x-2">
-              {['NT', 'LH', 'PD', 'TK'].map((initial, i) => (
+              {stats.initials.map((initial, i) => (
                 <div
                   key={i}
                   className="w-8 h-8 rounded-full bg-zinc-100 dark:bg-zinc-800 border-2 border-white dark:border-[#030303] flex items-center justify-center text-[10px] font-bold text-zinc-500 dark:text-zinc-300 transition-colors duration-500"
@@ -278,11 +293,11 @@ export function NewsletterSection() {
             </div>
             <div className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 transition-colors duration-500 max-w-50 sm:max-w-none">
               <span className="font-semibold text-zinc-900 dark:text-white">
-                347
+                {stats.totalCount}
               </span>{' '}
               người đã đăng ký · còn{' '}
               <span className="font-semibold text-blue-600 dark:text-blue-400">
-                153
+                {Math.max(0, 500 - stats.totalCount)}
               </span>{' '}
               suất Early Bird
             </div>
