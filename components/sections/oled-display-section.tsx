@@ -17,7 +17,7 @@ const oledSpecs = [
 ];
 
 export function OledDisplaySection() {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const { scrollYProgress } = useScroll({

@@ -31,8 +31,8 @@ export * from "./enums"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more Media
- * const media = await prisma.media.findMany()
+ * // Fetch zero or more Newsletters
+ * const newsletters = await prisma.newsletter.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -42,37 +42,7 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
- * Model Media
+ * Model Newsletter
  * 
  */
-export type Media = Prisma.MediaModel
-/**
- * Model Product
- * 
- */
-export type Product = Prisma.ProductModel
-/**
- * Model ProductVariant
- * 
- */
-export type ProductVariant = Prisma.ProductVariantModel
-/**
- * Model UserGuest
- * 
- */
-export type UserGuest = Prisma.UserGuestModel
-/**
- * Model NewsletterSubscription
- * 
- */
-export type NewsletterSubscription = Prisma.NewsletterSubscriptionModel
-/**
- * Model CartItem
- * 
- */
-export type CartItem = Prisma.CartItemModel
-/**
- * Model WishlistItem
- * 
- */
-export type WishlistItem = Prisma.WishlistItemModel
+export type Newsletter = Prisma.NewsletterModel

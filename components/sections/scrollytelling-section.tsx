@@ -24,7 +24,7 @@ export function ScrollytellingSection() {
   );
 
   return (
-    <>
+    <div className="w-full">
       {/* ================= BẢN MOBILE (Cuộn Dọc) ================= */}
       <section className="flex md:hidden w-full bg-black flex-col pb-20">
         <div className="w-full min-h-[90vh] relative overflow-hidden pb-12 border border-border">
@@ -82,6 +82,6 @@ export function ScrollytellingSection() {
           </motion.div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

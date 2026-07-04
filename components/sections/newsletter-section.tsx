@@ -8,8 +8,21 @@ import LightRays from '@/components/LightRays';
 import ShinyText from '@/components/ui/ShinyText';
 import { useTheme } from 'next-themes';
 
+// React Hook Form & Zod
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { toast } from 'sonner';
+
+// Shadcn Field UI
+import { Field, FieldLabel, FieldError } from '@/components/ui/field';
+import { Input } from '@/components/ui/input';
+
+const formSchema = z.object({
+  email: z.string().email('Địa chỉ email không hợp lệ.'),
+});
+
 export function NewsletterSection() {
-  const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle');
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -21,26 +34,54 @@ export function NewsletterSection() {
     return () => cancelAnimationFrame(timer);
   }, []);
 
-  const handleSubmit = (e: React.SubmitEvent) => {
-    e.preventDefault();
-    if (!email) return;
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: '',
+    },
+  });
 
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setStatus('loading');
 
-    // Simulate API call
-    setTimeout(() => {
-      setStatus('success');
-      setEmail('');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-      // Reset after 3 seconds
+      const resultData = await res.json();
+
+      if (!res.ok) {
+        toast.error(resultData.message || 'Có lỗi xảy ra');
+        setStatus('idle');
+        return;
+      }
+
+      setStatus('success');
+      form.reset();
+
+      // Tracking Success
+      import('@/lib/tracking').then(({ sendTrackingEvent }) => {
+        sendTrackingEvent({
+          eventType: 'click',
+          target: 'newsletter_subscribe_success',
+        });
+      });
+
       setTimeout(() => {
         setStatus('idle');
-      }, 3000);
-    }, 1500);
+      }, 5000);
+    } catch {
+      toast.error('Không thể kết nối đến máy chủ.');
+      setStatus('idle');
+    }
   };
 
   return (
     <section
+
       className="relative w-full bg-zinc-50 dark:bg-[#030303] py-32 md:py-48 flex flex-col items-center justify-center overflow-hidden transition-colors duration-500"
       id="newsletter"
     >
@@ -126,7 +167,10 @@ export function NewsletterSection() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="w-full max-w-lg mb-8"
         >
-          <form onSubmit={handleSubmit} className="relative w-full">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="relative w-full"
+          >
             <AnimatePresence mode="wait">
               {status === 'success' ? (
                 <motion.div
@@ -147,41 +191,67 @@ export function NewsletterSection() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="w-full flex flex-col sm:flex-row items-center gap-3 sm:gap-0 sm:bg-white/80 sm:dark:bg-zinc-900/60 sm:border sm:border-zinc-200 sm:dark:border-zinc-800 sm:rounded-full sm:p-1.5 sm:backdrop-blur-md sm:focus-within:ring-1 sm:focus-within:ring-zinc-400 sm:dark:focus-within:ring-zinc-700 transition-all sm:shadow-xl sm:dark:shadow-2xl"
+                  className="w-full flex flex-col"
                 >
-                  <div className="w-full sm:grow flex items-center bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 sm:bg-transparent sm:border-none rounded-full sm:rounded-none p-1.5 sm:p-0 backdrop-blur-md sm:backdrop-blur-none shadow-xl dark:shadow-2xl sm:shadow-none focus-within:ring-1 focus-within:ring-zinc-400 dark:focus-within:ring-zinc-700 sm:focus-within:ring-0 transition-all">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="your@email.com"
-                      required
-                      className="w-full min-w-0 bg-transparent border-none outline-none text-zinc-900 dark:text-white px-5 sm:px-6 py-3 placeholder:text-zinc-500 dark:placeholder:text-zinc-600 font-medium transition-colors duration-500"
-                      disabled={status === 'loading'}
-                    />
-                  </div>
-                  <Button
-                    type="submit"
-                    disabled={status === 'loading'}
-                    className="w-full sm:w-auto h-12 px-6 rounded-full bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-black font-semibold transition-all duration-300 flex items-center justify-center gap-2 group shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:shadow-[0_0_20px_rgba(255,255,255,0.2)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] shrink-0"
-                  >
-                    {status === 'loading' ? (
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          duration: 1,
-                          repeat: Infinity,
-                          ease: 'linear',
-                        }}
-                        className="w-5 h-5 border-2 border-current border-t-transparent rounded-full"
-                      />
-                    ) : (
-                      <>
-                        <span>Đăng ký ngay</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </>
+                  <Controller
+                    name="email"
+                    control={form.control}
+                    render={({ field, fieldState }) => (
+                      <Field
+                        data-invalid={fieldState.invalid}
+                        className="w-full"
+                      >
+                        <div className="w-full flex flex-col sm:flex-row items-center gap-3 sm:gap-0 sm:bg-white/80 sm:dark:bg-zinc-900/60 sm:border sm:border-zinc-200 sm:dark:border-zinc-800 sm:rounded-full sm:p-1.5 sm:backdrop-blur-md sm:focus-within:ring-1 sm:focus-within:ring-zinc-400 sm:dark:focus-within:ring-zinc-700 transition-all sm:shadow-xl sm:dark:shadow-2xl">
+                          <div className="w-full sm:grow flex items-center bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 sm:bg-transparent sm:border-none rounded-full sm:rounded-none p-1.5 sm:p-0 backdrop-blur-md sm:backdrop-blur-none shadow-xl dark:shadow-2xl sm:shadow-none focus-within:ring-1 focus-within:ring-zinc-400 dark:focus-within:ring-zinc-700 sm:focus-within:ring-0 transition-all relative">
+                            <FieldLabel
+                              htmlFor={field.name}
+                              className="sr-only"
+                            >
+                              Email
+                            </FieldLabel>
+                            <Input
+                              {...field}
+                              id={field.name}
+                              type="email"
+                              aria-invalid={fieldState.invalid}
+                              placeholder="your@email.com"
+                              className="w-full min-w-0 bg-transparent border-none outline-none text-zinc-900 dark:text-white px-5 sm:px-6 py-3 placeholder:text-zinc-500 dark:placeholder:text-zinc-600 font-medium transition-colors duration-500 shadow-none focus-visible:ring-0"
+                              disabled={status === 'loading'}
+                            />
+                          </div>
+
+                          <Button
+                            type="submit"
+                            disabled={status === 'loading'}
+                            className="w-full sm:w-auto h-12 px-6 rounded-full bg-zinc-900 hover:bg-zinc-800 dark:bg-white dark:hover:bg-zinc-200 text-white dark:text-black font-semibold transition-all duration-300 flex items-center justify-center gap-2 group shadow-[0_0_15px_rgba(0,0,0,0.1)] hover:shadow-[0_0_20px_rgba(0,0,0,0.2)] dark:shadow-[0_0_20px_rgba(255,255,255,0.2)] dark:hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] shrink-0"
+                          >
+                            {status === 'loading' ? (
+                              <motion.div
+                                animate={{ rotate: 360 }}
+                                transition={{
+                                  duration: 1,
+                                  repeat: Infinity,
+                                  ease: 'linear',
+                                }}
+                                className="w-5 h-5 border-2 border-current border-t-transparent rounded-full"
+                              />
+                            ) : (
+                              <>
+                                <span>Đăng ký ngay</span>
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                              </>
+                            )}
+                          </Button>
+                        </div>
+                        {/* Error Message underneath */}
+                        {fieldState.invalid && (
+                          <div className="mt-2 text-left px-4">
+                            <FieldError errors={[fieldState.error]} />
+                          </div>
+                        )}
+                      </Field>
                     )}
-                  </Button>
+                  />
                 </motion.div>
               )}
             </AnimatePresence>

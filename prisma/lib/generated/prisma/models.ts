@@ -8,11 +8,5 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Media'
-export type * from './models/Product'
-export type * from './models/ProductVariant'
-export type * from './models/UserGuest'
-export type * from './models/NewsletterSubscription'
-export type * from './models/CartItem'
-export type * from './models/WishlistItem'
+export type * from './models/Newsletter'
 export type * from './commonInputTypes'

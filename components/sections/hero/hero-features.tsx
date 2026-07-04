@@ -107,6 +107,7 @@ export function HeroFeatures() {
   const handleScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
+    _linkText: string,
   ) => {
     if (href && href.startsWith('#') && href !== '#') {
       e.preventDefault();
@@ -139,7 +140,9 @@ export function HeroFeatures() {
           <div className="mt-auto">
             <a
               href={feature.href || '#'}
-              onClick={(e) => handleScroll(e, feature.href || '#')}
+              onClick={(e) =>
+                handleScroll(e, feature.href || '#', feature.linkText)
+              }
               className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400 group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors flex items-center justify-between"
             >
               {feature.linkText}

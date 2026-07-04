@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zephyrus-g14.asus.com/sitemap.xml
