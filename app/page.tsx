@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { HeroSection } from '@/components/sections/hero-section';
 import { VerticalNav } from '@/components/ui/vertical-nav';
 import { ThemeToggle } from '@/components/layout/theme-toggle';
@@ -29,44 +30,49 @@ export default function Home() {
         <HeroSection />
       </div>
 
-      {/* Use Cases — just below the fold, load eagerly for fast scroll */}
-      <UseCasesSection />
+      {/* Use Cases and below are wrapped in Suspense to stream the HTML. 
+          This makes the initial HTML payload (Hero) extremely small and fast, 
+          fixing the 4s LCP for the h1 tag, while still keeping SSR for SEO! */}
+      <Suspense fallback={<div className="w-full min-h-[300vh] bg-black" />}>
+        {/* Use Cases — just below the fold, load eagerly for fast scroll */}
+        <UseCasesSection />
 
-      {/* Performance Section — header & specs */}
-      <PerformanceSection />
+        {/* Performance Section — header & specs */}
+        <PerformanceSection />
 
-      {/* Scrollytelling Section */}
-      <ScrollytellingSection />
+        {/* Scrollytelling Section */}
+        <ScrollytellingSection />
 
-      {/* Performance Carousel */}
-      <section className="relative w-full bg-white dark:bg-black py-24 md:py-32 flex flex-col items-center justify-center overflow-hidden transition-colors duration-500">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-zinc-200/50 via-white to-white dark:from-zinc-900/40 dark:via-black dark:to-black pointer-events-none transition-colors duration-500"></div>
-        <div className="w-full z-10 px-4 md:px-0">
-          <PerformanceCarousel />
-        </div>
-      </section>
+        {/* Performance Carousel */}
+        <section className="relative w-full bg-white dark:bg-black py-24 md:py-32 flex flex-col items-center justify-center overflow-hidden transition-colors duration-500">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,var(--tw-gradient-stops))] from-zinc-200/50 via-white to-white dark:from-zinc-900/40 dark:via-black dark:to-black pointer-events-none transition-colors duration-500"></div>
+          <div className="w-full z-10 px-4 md:px-0">
+            <PerformanceCarousel />
+          </div>
+        </section>
 
-      {/* OLED Display Section */}
-      <OledDisplaySection />
+        {/* OLED Display Section */}
+        <OledDisplaySection />
 
-      {/* OLED Features Scrollytelling */}
-      <OledFeaturesSection />
+        {/* OLED Features Scrollytelling */}
+        <OledFeaturesSection />
 
-      {/* Design Section */}
-      <DesignSection />
+        {/* Design Section */}
+        <DesignSection />
 
-      <CoolingSection />
+        <CoolingSection />
 
-      <ControlSection />
+        <ControlSection />
 
-      {/* Portability Section */}
-      <PortabilitySection />
+        {/* Portability Section */}
+        <PortabilitySection />
 
-      {/* FAQ Section */}
-      <FaqSection />
+        {/* FAQ Section */}
+        <FaqSection />
 
-      {/* Newsletter Section */}
-      <NewsletterSection />
+        {/* Newsletter Section */}
+        <NewsletterSection />
+      </Suspense>
     </main>
   );
 }
