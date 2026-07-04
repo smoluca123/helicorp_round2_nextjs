@@ -81,7 +81,6 @@ export function NewsletterSection() {
 
   return (
     <section
-
       className="relative w-full bg-zinc-50 dark:bg-[#030303] py-32 md:py-48 flex flex-col items-center justify-center overflow-hidden transition-colors duration-500"
       id="newsletter"
     >
@@ -202,7 +201,7 @@ export function NewsletterSection() {
                         className="w-full"
                       >
                         <div className="w-full flex flex-col sm:flex-row items-center gap-3 sm:gap-0 sm:bg-white/80 sm:dark:bg-zinc-900/60 sm:border sm:border-zinc-200 sm:dark:border-zinc-800 sm:rounded-full sm:p-1.5 sm:backdrop-blur-md sm:focus-within:ring-1 sm:focus-within:ring-zinc-400 sm:dark:focus-within:ring-zinc-700 transition-all sm:shadow-xl sm:dark:shadow-2xl">
-                          <div className="w-full sm:grow flex items-center bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 sm:bg-transparent sm:border-none rounded-full sm:rounded-none p-1.5 sm:p-0 backdrop-blur-md sm:backdrop-blur-none shadow-xl dark:shadow-2xl sm:shadow-none focus-within:ring-1 focus-within:ring-zinc-400 dark:focus-within:ring-zinc-700 sm:focus-within:ring-0 transition-all relative">
+                          <div className="w-full sm:grow flex items-center bg-white/80 dark:bg-zinc-900/60 border border-zinc-200 dark:border-zinc-800 sm:bg-transparent sm:dark:bg-transparent sm:border-transparent sm:dark:border-transparent rounded-full sm:rounded-none p-1.5 sm:p-0 backdrop-blur-md sm:backdrop-blur-none shadow-xl dark:shadow-2xl sm:shadow-none sm:dark:shadow-none focus-within:ring-1 focus-within:ring-zinc-400 dark:focus-within:ring-zinc-700 sm:focus-within:ring-0 sm:dark:focus-within:ring-0 transition-all relative">
                             <FieldLabel
                               htmlFor={field.name}
                               className="sr-only"
@@ -215,7 +214,7 @@ export function NewsletterSection() {
                               type="email"
                               aria-invalid={fieldState.invalid}
                               placeholder="your@email.com"
-                              className="w-full min-w-0 bg-transparent border-none outline-none text-zinc-900 dark:text-white px-5 sm:px-6 py-3 placeholder:text-zinc-500 dark:placeholder:text-zinc-600 font-medium transition-colors duration-500 shadow-none focus-visible:ring-0"
+                              className="w-full h-12 sm:h-full min-h-12 min-w-0 bg-transparent! border-none! !rounded-full sm:!rounded-r-none outline-none text-zinc-900 dark:text-white px-5 sm:px-6 placeholder:text-zinc-500 dark:placeholder:text-zinc-600 font-medium transition-colors duration-500 shadow-none focus-visible:ring-0 [&:-webkit-autofill]:[transition:background-color_9999s_ease-in-out_0s] [&:-webkit-autofill]:[-webkit-text-fill-color:black] dark:[&:-webkit-autofill]:[-webkit-text-fill-color:white]"
                               disabled={status === 'loading'}
                             />
                           </div>

@@ -107,6 +107,7 @@ export function HeroFeatures() {
   const handleScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _linkText: string,
   ) => {
     if (href && href.startsWith('#') && href !== '#') {
