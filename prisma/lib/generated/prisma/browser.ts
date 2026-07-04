@@ -18,37 +18,7 @@ export { Prisma }
 export * as $Enums from './enums'
 export * from './enums';
 /**
- * Model Media
+ * Model Newsletter
  * 
  */
-export type Media = Prisma.MediaModel
-/**
- * Model Product
- * 
- */
-export type Product = Prisma.ProductModel
-/**
- * Model ProductVariant
- * 
- */
-export type ProductVariant = Prisma.ProductVariantModel
-/**
- * Model UserGuest
- * 
- */
-export type UserGuest = Prisma.UserGuestModel
-/**
- * Model NewsletterSubscription
- * 
- */
-export type NewsletterSubscription = Prisma.NewsletterSubscriptionModel
-/**
- * Model CartItem
- * 
- */
-export type CartItem = Prisma.CartItemModel
-/**
- * Model WishlistItem
- * 
- */
-export type WishlistItem = Prisma.WishlistItemModel
+export type Newsletter = Prisma.NewsletterModel

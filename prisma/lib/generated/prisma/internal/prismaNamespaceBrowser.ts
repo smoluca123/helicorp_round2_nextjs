@@ -51,13 +51,7 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Media: 'Media',
-  Product: 'Product',
-  ProductVariant: 'ProductVariant',
-  UserGuest: 'UserGuest',
-  NewsletterSubscription: 'NewsletterSubscription',
-  CartItem: 'CartItem',
-  WishlistItem: 'WishlistItem'
+  Newsletter: 'Newsletter'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -74,90 +68,13 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const MediaScalarFieldEnum = {
-  id: 'id',
-  url: 'url',
-  type: 'type',
-  altText: 'altText',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type MediaScalarFieldEnum = (typeof MediaScalarFieldEnum)[keyof typeof MediaScalarFieldEnum]
-
-
-export const ProductScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  slug: 'slug',
-  description: 'description',
-  status: 'status',
-  coverImageId: 'coverImageId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
-
-
-export const ProductVariantScalarFieldEnum = {
-  id: 'id',
-  productId: 'productId',
-  colorName: 'colorName',
-  colorHex: 'colorHex',
-  price: 'price',
-  stock: 'stock',
-  imageId: 'imageId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type ProductVariantScalarFieldEnum = (typeof ProductVariantScalarFieldEnum)[keyof typeof ProductVariantScalarFieldEnum]
-
-
-export const UserGuestScalarFieldEnum = {
+export const NewsletterScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  securityCode: 'securityCode',
-  securityCodeExpiresAt: 'securityCodeExpiresAt',
-  isVerified: 'isVerified',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type UserGuestScalarFieldEnum = (typeof UserGuestScalarFieldEnum)[keyof typeof UserGuestScalarFieldEnum]
-
-
-export const NewsletterSubscriptionScalarFieldEnum = {
-  id: 'id',
-  productId: 'productId',
-  userGuestId: 'userGuestId',
   createdAt: 'createdAt'
 } as const
 
-export type NewsletterSubscriptionScalarFieldEnum = (typeof NewsletterSubscriptionScalarFieldEnum)[keyof typeof NewsletterSubscriptionScalarFieldEnum]
-
-
-export const CartItemScalarFieldEnum = {
-  id: 'id',
-  quantity: 'quantity',
-  productId: 'productId',
-  userGuestId: 'userGuestId',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-} as const
-
-export type CartItemScalarFieldEnum = (typeof CartItemScalarFieldEnum)[keyof typeof CartItemScalarFieldEnum]
-
-
-export const WishlistItemScalarFieldEnum = {
-  id: 'id',
-  productId: 'productId',
-  userGuestId: 'userGuestId',
-  createdAt: 'createdAt'
-} as const
-
-export type WishlistItemScalarFieldEnum = (typeof WishlistItemScalarFieldEnum)[keyof typeof WishlistItemScalarFieldEnum]
+export type NewsletterScalarFieldEnum = (typeof NewsletterScalarFieldEnum)[keyof typeof NewsletterScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -174,12 +91,4 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

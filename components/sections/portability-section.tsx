@@ -36,7 +36,7 @@ export function PortabilitySection() {
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full z-0">
         <Image
-          src="/assets/images/portability_bg.jpg"
+          src="/assets/images/portability_bg.webp"
           alt="Portability Background"
           fill
           className="object-cover object-center"

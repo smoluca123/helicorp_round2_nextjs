@@ -1,0 +1,219 @@
+{
+  "product": {
+    "name": "ROG Zephyrus G14 GU405AW-SY029W",
+    "fullName": "2026 ROG Zephyrus G14 GU405AW-SY029W",
+    "tagline": "Laptop Gaming AI 14 inch ROG Nebula OLED RTX 50 Series Mạnh Nhất",
+    "brand": "ROG (Republic of Gamers)",
+    "productCode": "GU405AW-SY029W",
+    "partNumber": "90NR0P84-M002C0",
+    "sku": "90NR0P84-M002C0",
+    "color": "Eclipse Gray"
+  },
+  "operatingSystem": {
+    "name": "Windows 11 Home (Single Language)",
+    "note": "ASUS khuyên dùng Windows 11 Pro cho doanh nghiệp. Kèm 1 tháng dùng thử miễn phí Microsoft 365 dành cho khách hàng mới (cần thẻ tín dụng)."
+  },
+  "cpu": {
+    "brand": "Intel",
+    "model": "Intel® Core™ Ultra 9 Processor 386H",
+    "baseClockGHz": 2.1,
+    "maxBoostClockGHz": 4.9,
+    "cacheMB": 18,
+    "cores": 16,
+    "threads": 16,
+    "npu": "Intel® NPU lên đến 50 TOPS",
+    "description": "CPU Intel Core Ultra 9 386H thế hệ mới nhất, 16 nhân 16 luồng, xung nhịp boost lên đến 4.9GHz, cache 18MB, tích hợp NPU 50 TOPS cho các tác vụ AI"
+  },
+  "gpu": {
+    "brand": "NVIDIA",
+    "model": "NVIDIA® GeForce RTX™ 5080",
+    "vramGB": 16,
+    "vramType": "GDDR7",
+    "features": ["MUX Switch", "NVIDIA® Advanced Optimus"],
+    "series": "RTX 50 Series",
+    "description": "GPU NVIDIA GeForce RTX 5080 16GB GDDR7 thuộc thế hệ RTX 50 mạnh nhất trên laptop. Tích hợp MUX Switch và NVIDIA Advanced Optimus để tối ưu hiệu năng và pin."
+  },
+  "ram": {
+    "capacityGB": 32,
+    "type": "LPDDR5X",
+    "speedMHz": 8533,
+    "configuration": "On-board (hàn trực tiếp vào bo mạch chủ)",
+    "upgradable": false,
+    "maxCapacityGB": 64,
+    "note": "RAM được hàn trực tiếp vào bo mạch chủ để đạt tốc độ LPDDR5X-8533 và độ mỏng tối ưu. Có thể chọn cấu hình lên đến 64GB."
+  },
+  "storage": {
+    "capacityTB": 1,
+    "type": "NVMe™ M.2 SSD",
+    "interface": "PCIe® 4.0",
+    "formFactor": "M.2 2280",
+    "upgradable": true,
+    "slots": 1,
+    "note": "SSD có thể tự thay thế qua khe M.2 2280 PCIe 4.0"
+  },
+  "display": {
+    "sizeInch": 14,
+    "resolution": "3K (2880 x 1800)",
+    "aspectRatio": "16:10",
+    "panelType": "OLED",
+    "refreshRateHz": 120,
+    "brightnessNits": 1100,
+    "features": [
+      "G-Sync",
+      "Anti-reflection display (chống lóa)",
+      "Pantone Validated",
+      "Dolby Vision HDR",
+      "ROG Nebula HDR Display",
+      "VESA DisplayHDR 1000 True Black"
+    ],
+    "description": "Màn hình OLED 14 inch 3K 120Hz với độ sáng 1100 nits, hỗ trợ G-Sync, Dolby Vision HDR, chống lóa, chuẩn màu Pantone Validated. Thế hệ mới sáng hơn đáng kể so với OLED thế hệ trước."
+  },
+  "keyboard": {
+    "type": "Backlit Chiclet Keyboard",
+    "backlightZones": "1-Zone RGB",
+    "backlightBrand": "Aura Sync",
+    "features": ["Phím Copilot AI tích hợp"],
+    "note": "Bàn phím RGB 1 vùng (không phải per-key), tích hợp phím Copilot AI"
+  },
+  "battery": {
+    "capacityWHr": 73,
+    "cells": "4-cell Li-ion (4S1P)",
+    "fastCharge": "Sạc nhanh 0–50% trong 30 phút",
+    "charger": "250W (Rectangle Connector), Output: 20V DC / 12.5A"
+  },
+  "physicalSpecs": {
+    "weightKg": 1.58,
+    "dimensionsCm": "31.1 x 22.0 x 1.59 ~ 1.83 cm",
+    "dimensionsInch": "12.24\" x 8.66\" x 0.63\" ~ 0.72\"",
+    "thinnestPointCm": 1.59
+  },
+  "camera": {
+    "resolution": "1080P FHD IR Camera",
+    "features": ["Windows Hello (nhận dạng khuôn mặt)"]
+  },
+  "audio": {
+    "ports": ["1x 3.5mm Combo Audio Jack (tai nghe + mic)"],
+    "microphone": "Built-in array microphone (mic mảng tích hợp)"
+  },
+  "connectivity": {
+    "wifi": {
+      "standard": "Wi-Fi 7 (802.11be)",
+      "bands": "Triple band (2.4GHz + 5GHz + 6GHz)",
+      "antennas": "2x2 MIMO"
+    },
+    "bluetooth": {
+      "version": "6.0",
+      "note": "Phiên bản Bluetooth có thể thay đổi theo OS"
+    }
+  },
+  "ports": [
+    {
+      "name": "Thunderbolt 4",
+      "quantity": 1,
+      "features": ["DisplayPort", "Power Delivery (sạc)"],
+      "speedGbps": 40
+    },
+    {
+      "name": "USB 3.2 Gen 2 Type-C",
+      "quantity": 1,
+      "features": ["DisplayPort", "Power Delivery (sạc)", "G-SYNC"],
+      "speedGbps": 10
+    },
+    {
+      "name": "USB 3.2 Gen 2 Type-A",
+      "quantity": 2,
+      "speedGbps": 10
+    },
+    {
+      "name": "SD Card Reader (UHS-II)",
+      "quantity": 1,
+      "speedMBs": 312,
+      "note": "Kích thước đầy đủ (SD full-size), khác với microSD trên thế hệ trước"
+    }
+  ],
+  "security": {
+    "features": [
+      "BIOS Administrator Password & User Password Protection",
+      "Pluton Security Processor",
+      "Secured-core PC (Level 3)"
+    ]
+  },
+  "software": {
+    "preinstalled": ["MyASUS", "Armoury Crate"],
+    "note": "Armoury Crate cho phép tùy chỉnh đèn Slash Lighting, hiệu suất CPU/GPU, và nhiều cài đặt khác"
+  },
+  "slashLighting": {
+    "zones": 35,
+    "previousGenZones": 7,
+    "material": "Chất liệu hiệu ứng tráng gương",
+    "modes": ["Sạc (Charging mode)", "Trạng thái pin (Battery status mode)", "Hoạt họa tùy chỉnh"],
+    "customizable": true,
+    "canTurnOff": true,
+    "softwareControl": "Armoury Crate"
+  },
+  "cooling": {
+    "design": "Ba quạt (Triple fan trên một số model)",
+    "technology": "Hệ thống ống dẫn nhiệt (Heat pipe)",
+    "note": "CPU và GPU được tinh chỉnh theo mức công suất phù hợp với khả năng tản nhiệt"
+  },
+  "faq": [
+    {
+      "question": "Đâu là sự khác biệt chính giữa Zephyrus G14 chạy Intel và AMD bản 2026?",
+      "answer": "Zephyrus G14 GU405 (Intel) sử dụng CPU Intel® Core™ Ultra 9 386H mới, cải tiến tản nhiệt, đèn Slash Lighting 35 vùng (tráng gương), nhiều tùy chọn GPU hơn và đầu đọc thẻ SD kích thước đầy đủ. Zephyrus G14 GA403 (AMD) giữ khung máy 2025 nhưng nâng cấp lên AMD Ryzen™ AI 9 465."
+    },
+    {
+      "question": "Tôi có thể nâng cấp RAM không?",
+      "answer": "Không. RAM 32GB LPDDR5X-8533 được hàn trực tiếp vào bo mạch chủ để đạt tốc độ cao và độ mỏng 1.59cm. Tuy nhiên có thể chọn cấu hình lên đến 64GB khi mua."
+    },
+    {
+      "question": "SSD có thể nâng cấp được không?",
+      "answer": "Có. Có một khe M.2 2280 PCIe 4.0 với SSD có thể tự thay thế."
+    },
+    {
+      "question": "Hệ thống tản nhiệt có tốt không?",
+      "answer": "Tốt. Zephyrus G14 sử dụng hệ thống ba quạt (một số model) và ống dẫn nhiệt. CPU/GPU được tinh chỉnh công suất phù hợp với tản nhiệt, đảm bảo hoạt động an toàn."
+    },
+    {
+      "question": "Màn hình OLED 2026 có gì mới so với thế hệ trước?",
+      "answer": "Sáng hơn đáng kể với 1100 nits (đạt VESA DisplayHDR 1000 True Black), lớp phủ chống lóa mới cho phép nhìn rõ hơn dưới ánh sáng mạnh."
+    },
+    {
+      "question": "Màn hình có hỗ trợ NVIDIA G-SYNC không?",
+      "answer": "Có, hoàn toàn tương thích G-SYNC."
+    },
+    {
+      "question": "Hệ thống đèn Slash Lighting có mới không?",
+      "answer": "Có. Nâng cấp từ 7 lên 35 vùng với chất liệu tráng gương. Có thêm chế độ hiển thị trạng thái sạc và pin."
+    },
+    {
+      "question": "Có thể tắt đèn Slash Lighting không?",
+      "answer": "Có. Tùy chỉnh hoặc tắt hoàn toàn qua phần mềm Armoury Crate."
+    },
+    {
+      "question": "Có khe cắm thẻ SD không?",
+      "answer": "Có. Khe cắm SD kích thước đầy đủ (SD full-size, UHS-II, 312MB/s) — thế hệ trước chỉ có microSD."
+    },
+    {
+      "question": "Có hỗ trợ sạc qua USB-C không?",
+      "answer": "Có. Cả cổng Thunderbolt 4 và USB Type-C đều hỗ trợ Power Delivery (PD) lên đến 100W."
+    },
+    {
+      "question": "Bàn phím có RGB per-key không?",
+      "answer": "Không, bàn phím đèn nền RGB 1 vùng (không phải per-key/từng phím riêng lẻ)."
+    },
+    {
+      "question": "Có WiFi 7 không?",
+      "answer": "Có, WiFi 7 (802.11be) triple band 2x2 MIMO."
+    }
+  ],
+  "keyHighlights": [
+    "Laptop gaming 14 inch mỏng nhẹ nhất với RTX 5080 16GB GDDR7",
+    "Màn hình OLED 3K 120Hz 1100 nits chống lóa, đạt HDR1000 True Black",
+    "CPU Intel Core Ultra 9 386H với NPU 50 TOPS cho AI tasks",
+    "RAM 32GB LPDDR5X-8533 (tốc độ cao nhất hiện tại)",
+    "Chỉ 1.58 kg — cực nhẹ cho một laptop gaming với GPU mạnh nhất",
+    "WiFi 7 + Bluetooth 6.0 thế hệ mới nhất",
+    "Đèn Slash Lighting 35 vùng tráng gương độc đáo",
+    "Sạc nhanh 0–50% trong 30 phút"
+  ]
+}
